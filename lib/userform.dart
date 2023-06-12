@@ -39,7 +39,7 @@ class _cscState extends State<csc> {
   var passnotvisible = true;
   var passwordnotvisible = true;
 
-  Future<void> submitdata() async {}
+ // Future<void> submitdata() async {}
 
 
   // late LocationData _currentPosition;
@@ -96,7 +96,6 @@ class _cscState extends State<csc> {
         backgroundColor: Colors.transparent,
       ),
       body: Container(
-
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9zZf18lYEwbdOiWxkW1TEn65uVm5x88XvHQ&usqp=CAU'),
