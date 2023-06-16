@@ -24,7 +24,8 @@ class _cscState extends State<csc> {
 
   var days = DateFormat('yMMMMd').format(DateTime.now());
 
-  var selected = 'male';
+  var selected = 0;
+  var select = 'male';
   var check = false;
   File ? _imageFile;
 
@@ -660,6 +661,7 @@ class _cscState extends State<csc> {
                     SizedBox(width: 20,),
                     Column(
                       children: [
+
                         CircleAvatar(
                           radius: 30,
                           child: Image(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoGa43cPo70DYcZ847mc02nOf8y0r9nJ38WQ&usqp=CAU')),
@@ -677,6 +679,23 @@ class _cscState extends State<csc> {
                             color: Colors.black,
                             fontSize: 15,
                             fontWeight: FontWeight.bold)),
+                        // RadioMenuButton(
+                        //     value: 1,
+                        //     groupValue: select,
+                        //     onChanged: (value) {
+                        //       setState(() {
+                        //         select = 'male';
+                        //         print('$select');
+                        //       });
+                        //       //   value = selected;
+                        //     },
+                        //     child: Text(
+                        //       "Male",
+                        //       style: TextStyle(
+                        //           fontWeight: FontWeight.bold,
+                        //           fontSize: 17,
+                        //           fontStyle: FontStyle.italic),
+                        //     )),
                       ],
                     ),
                     SizedBox(width: 32,),
@@ -700,6 +719,23 @@ class _cscState extends State<csc> {
                             color: Colors.black,
                             fontSize: 15,
                             fontWeight: FontWeight.bold)),
+                        // RadioMenuButton(
+                        //           value: 2,
+                        //           groupValue: select,
+                        //           onChanged: (value) {
+                        //             setState(() {
+                        //               select = 'female';
+                        //               print('$select');
+                        //             });
+                        //             //   value = selected;
+                        //           },
+                        //           child: Text(
+                        //             "Female",
+                        //             style: TextStyle(
+                        //                 fontWeight: FontWeight.bold,
+                        //                 fontSize: 17,
+                        //                 fontStyle: FontStyle.italic),
+                        //           )),
                       ],
                     )
                   ],
