@@ -106,7 +106,7 @@ class _cscState extends State<csc> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assetName/bg.jpg'),
+            image: AssetImage('assetsimage/bg.jpg'),
               fit: BoxFit.fill
           )
         ),
@@ -119,8 +119,7 @@ class _cscState extends State<csc> {
                 Container(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: NetworkImage(
-                                'https://img.freepik.com/free-vector/man-going-trip-booking-tour-online-guy-sitting-front-computer-table-looking-voyage-summer-vacation_575670-946.jpg?w=360'),
+                            image: AssetImage('assetsimage/imang.jpg'),
                             fit: BoxFit.fill
                         )),
                     height: MediaQuery.of(context).size.height -500,
@@ -128,17 +127,7 @@ class _cscState extends State<csc> {
                 SizedBox(
                   height: 1,
                 ),
-              //  Text('Enter Your User Details‍‍',style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold),),
                 Container(
-                  // decoration: BoxDecoration(
-                  //   image: DecorationImage(
-                  //     image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd7hN7tr7rLdleu3r-CLaEvfwJXTF9a-c66w&usqp=CAU'),
-                  //     fit: BoxFit.cover
-                  //   )
-                  // ),
-                  //   width: 500,
-                  // height: 90,
-                  //  width: MediaQuery.of(context).size.width,
                     child: _imageFile == null
                         ? GestureDetector(
                             onTap: () {
@@ -399,22 +388,10 @@ class _cscState extends State<csc> {
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
                             fontSize: 18),
-                        // prefixIcon: Icon(
-                        //   Icons.phone,
-                        //   color: Colors.black,
-                        //   size: 31,
-                        // ),
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 7),
                         child: Icon(Icons.phone,size: 29,color: Colors.black,),
                       )
-                        // focusedBorder: OutlineInputBorder(
-                        //     borderRadius: BorderRadius.circular(23),
-                        //     borderSide:
-                        //         BorderSide(width: 2, color: Colors.black)),
-                        // enabledBorder: OutlineInputBorder(
-                        //     borderSide: BorderSide(width: 2, color: Colors.black),
-                        //     borderRadius: BorderRadius.circular(23))
                     ),
                   ),
                 ),
@@ -443,25 +420,10 @@ class _cscState extends State<csc> {
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                           fontSize: 18),
-                      // prefixIcon: Icon(
-                      //   Icons.calendar_month_outlined,
-                      //   color: Colors.black,
-                      //   size: 31,
-                      // ),
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 7),
                         child: Icon(Icons.calendar_month_outlined,size: 29,color: Colors.black,),
                       )
-                      // focusedBorder: OutlineInputBorder(
-                      //   borderRadius: BorderRadius.circular(23),
-                      //   borderSide: BorderSide(
-                      //     width: 2,
-                      //     color: Colors.black,
-                      //   ),
-                      // ),
-                      // enabledBorder: OutlineInputBorder(
-                      //     borderSide: BorderSide(width: 2, color: Colors.black),
-                      //     borderRadius: BorderRadius.circular(23)),
                     ),
                     onTap: () async {
                       DateTime? datepicker = await showDatePicker(
@@ -631,51 +593,52 @@ class _cscState extends State<csc> {
                       children: [
                         CircleAvatar(
                           radius: 30,
-                          child: Image(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoGa43cPo70DYcZ847mc02nOf8y0r9nJ38WQ&usqp=CAU')),
+                          child: Image(image: AssetImage('assetsimage/male.jpg'),
                         ),
-                        // RadioMenuButton(
-                        //     value: 1,
-                        //     groupValue: selected,
-                        //     onChanged: (value) {
-                        //       setState(() {
-                        //         selected = 1;
-                        //         print('$selected');
-                        //       });
-                        //     },
-                        //     child: Text(
-                        //       "Male",
-                        //       style: TextStyle(
-                        //           fontWeight: FontWeight.bold,
-                        //           fontSize: 17,
-                        //           fontStyle: FontStyle.italic),
-                        //     )),
+                        ),
+                        RadioMenuButton(
+                            value: 1,
+                            groupValue: selected,
+                            onChanged: (value) {
+                              setState(() {
+                                selected = 1;
+                                print('$selected');
+                              });
+                            },
+                            child: Text(
+                              "Male",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17,
+                                  fontStyle: FontStyle.italic),
+                            ),),
                       ],
                     ),
-                    SizedBox(width: 32,),
+                    SizedBox(width: 2,),
                     Column(
                       children: [
                         CircleAvatar(
                           radius: 30,
                           backgroundColor: Colors.white,
-                          child: Image(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrH61XOFcRQuQs_ZY5yNgm9QMdrBup7J2-qA&usqp=CAU',),
+                          child: Image(image: AssetImage('assetsimage/female.jpg')
                           ),
                         ),
-                        // RadioMenuButton(
-                        //           value: 'male',
-                        //           groupValue: selected,
-                        //           onChanged: (value) {
-                        //             setState(() {
-                        //               selected = 2;
-                        //               print('$selected');
-                        //             });
-                        //           },
-                        //           child: Text(
-                        //             "Female",
-                        //             style: TextStyle(
-                        //                 fontWeight: FontWeight.bold,
-                        //                 fontSize: 17,
-                        //                 fontStyle: FontStyle.italic),
-                        //           )),
+                        RadioMenuButton(
+                                  value: 2,
+                                  groupValue: selected,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selected = 2;
+                                      print('$selected');
+                                    });
+                                  },
+                                  child: Text(
+                                    "Female",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17,
+                                        fontStyle: FontStyle.italic),
+                                  )),
                       ],
                     )
                   ],
@@ -781,7 +744,7 @@ class _cscState extends State<csc> {
                                       actions: [
                                         ElevatedButton(
                                             onPressed: () {
-                                              //  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>()));
+                                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>csc()));
                                             },
                                             child: Text('Ok'))
                                       ]);
