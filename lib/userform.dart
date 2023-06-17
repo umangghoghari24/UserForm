@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:userform/userlogo.dart';
 
 
 
@@ -20,14 +21,52 @@ class csc extends StatefulWidget {
 }
 
 class _cscState extends State<csc> {
+
+
   final Treck_keys = GlobalKey<FormState>();
+  String? selectedValue;
+  final List<String> items = [
+      'Ahmedabad',
+    	'Surat',
+    	'Vadodara',
+      'Rajkot',
+    	'Bhavnagar',
+    	'Jamnagar',
+    	'Gandhinagar',
+    	'Junagadh',
+    	'Gandhidham',
+    	'Anand',
+    	'Navsari',
+    	'Morbi',
+    	'Nadiad',
+    	'Surendranagar',
+    	'Bharuch',
+    	'Mehsana',
+    	'Bhuj',
+    	'Porbandar',
+    	'Palanpur',
+    	'Valsad',
+    	'Vapi',
+    	'Gondal',
+    	'Veraval',
+    	'Godhra',
+    	'Patan',
+    	'Kalol',
+    	'Dahod',
+    	'Botad',
+    	'Amreli',
+     'Deesa',
+     'Jetpur'
+  ];
 
   var days = DateFormat('yMMMMd').format(DateTime.now());
 
-  var selected = 0;
+ // var selected = 0;
   var select = 'male';
   var check = false;
   File ? _imageFile;
+
+
 
   TextEditingController uname = TextEditingController();
   TextEditingController pass = TextEditingController();
@@ -58,20 +97,20 @@ class _cscState extends State<csc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     'Wel come to user app',
-      //   ),
-      //   backgroundColor: Colors.transparent,
-      // ),
+      appBar: AppBar(
+        title: Text(
+          'Wel come to user app',
+        ),
+        backgroundColor: Colors.lightBlueAccent,
+      ),
       body: Container(
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0mXkfDwdEbS2yG2NrY6MDhBp2IoRhboSaRg&usqp=CAU'),
-        //     fit: BoxFit.fill
-        //   )
-        // ),
-        // height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1aGHzUoDBYJe-PSkJvOA3NlWedfLxYCWMpw&usqp=CAU'),
+            fit: BoxFit.fill
+          )
+        ),
+        height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: Form(
             key: Treck_keys,
@@ -151,7 +190,7 @@ class _cscState extends State<csc> {
                         : CircleAvatar(
                             radius: 45,
                             child: CircleAvatar(
-                                backgroundColor: Colors.deepOrange,
+                                backgroundColor: Colors.lightBlueAccent,
                                 backgroundImage: Image.file(
                                   _imageFile!,
                                   fit: BoxFit.cover,
@@ -161,21 +200,9 @@ class _cscState extends State<csc> {
                 Text('Select Photo',style:
                 TextStyle(fontWeight: FontWeight.bold,fontSize: 17,fontStyle: FontStyle.italic),),
 
-
                 SizedBox(
                   height: 8,
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 230),
-                //   child: Text(
-                //     'Enter User Name :',
-                //     style: TextStyle(
-                //         color: Colors.black,
-                //         fontStyle: FontStyle.italic,
-                //         fontWeight: FontWeight.bold,
-                //         fontSize: 15),
-                //   ),
-                // ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: TextFormField(
@@ -203,33 +230,11 @@ class _cscState extends State<csc> {
                           padding: const EdgeInsets.only(left: 7),
                           child: Icon(Icons.person,size: 31,color: Colors.black,),
                         ),
-                        // prefixIcon: Icon(
-                        //   Icons.person,
-                        //   color: Colors.black87,
-                        //   size: 31,
-                        // ),
-                        // focusedBorder: OutlineInputBorder(
-                        //     borderRadius: BorderRadius.circular(23),
-                        //     borderSide:
-                        //         BorderSide(width: 2, color: Colors.black)),
-                        // enabledBorder: OutlineInputBorder(
-                        //   borderSide: BorderSide(width: 2, color: Colors.black),
-                        //   borderRadius: BorderRadius.circular(23),
-                        // ),
                       )),
                 ),
                 SizedBox(
                   height: 13,
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 200),
-                //   child: Text('Enter Your Password :',
-                //       style: TextStyle(
-                //           color: Colors.black,
-                //           fontStyle: FontStyle.italic,
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 15)),
-                // ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: TextFormField(
@@ -263,10 +268,6 @@ class _cscState extends State<csc> {
                           fontStyle: FontStyle.italic,
                           fontSize: 19,
                           fontWeight: FontWeight.bold),
-                      // prefixIcon: Icon(
-                      //   Icons.lock,
-                      //   color: Colors.black87,
-                      // ),
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 7),
                         child: Icon(Icons.lock,color: Colors.black,size: 29,),
@@ -282,28 +283,13 @@ class _cscState extends State<csc> {
                           });
                         },
                       ),
-                      // focusedBorder: OutlineInputBorder(
-                      //     borderRadius: BorderRadius.circular(23),
-                      //     borderSide: BorderSide(width: 2, color: Colors.black)),
-                      // enabledBorder: OutlineInputBorder(
-                      //   borderSide: BorderSide(width: 2, color: Colors.black),
-                      //   borderRadius: BorderRadius.circular(23),
-                      // ),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 13,
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 180),
-                //   child: Text('Enter Confime Password :',
-                //       style: TextStyle(
-                //           color: Colors.black,
-                //           fontStyle: FontStyle.italic,
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 15)),
-                // ),
+
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: TextFormField(
@@ -330,11 +316,6 @@ class _cscState extends State<csc> {
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                           fontSize: 19),
-                      // prefixIcon: Icon(
-                      //   Icons.lock,
-                      //   color: Colors.black87,
-                      //   size: 30,
-                      // ),
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 7),
                         child: Icon(Icons.lock,size: 29,color: Colors.black,),
@@ -350,28 +331,12 @@ class _cscState extends State<csc> {
                           });
                         },
                       ),
-                      // focusedBorder: OutlineInputBorder(
-                      //     borderRadius: BorderRadius.circular(23),
-                      //     borderSide: BorderSide(width: 2, color: Colors.black)),
-                      // enabledBorder: OutlineInputBorder(
-                      //   borderSide: BorderSide(width: 2, color: Colors.black),
-                      //   borderRadius: BorderRadius.circular(23.0),
-                      // ),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 13,
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 230),
-                //   child: Text('Enter Email_id :',
-                //       style: TextStyle(
-                //           color: Colors.black,
-                //           fontStyle: FontStyle.italic,
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 15)),
-                // ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: TextFormField(
@@ -398,36 +363,16 @@ class _cscState extends State<csc> {
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                           fontSize: 18),
-                      // prefixIcon: Icon(
-                      //   Icons.email,
-                      //   color: Colors.black,
-                      // ),
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 7),
                         child: Icon(Icons.email,size: 29,color: Colors.black,),
                       )
-                      // focusedBorder: OutlineInputBorder(
-                      //   borderRadius: BorderRadius.circular(23),
-                      //   borderSide: BorderSide(width: 2, color: Colors.black),
-                      // ),
-                      // enabledBorder: OutlineInputBorder(
-                      //     borderSide: BorderSide(width: 2, color: Colors.black),
-                      //     borderRadius: BorderRadius.circular(23)),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 13,
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 170),
-                //   child: Text('Enter Your Mobile Number :',
-                //       style: TextStyle(
-                //           color: Colors.black,
-                //           fontStyle: FontStyle.italic,
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 15)),
-                // ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: TextFormField(
@@ -476,15 +421,6 @@ class _cscState extends State<csc> {
                 SizedBox(
                   height: 13,
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 220),
-                //   child: Text('Enter Birth Date :',
-                //       style: TextStyle(
-                //           color: Colors.black,
-                //           fontStyle: FontStyle.italic,
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 15)),
-                // ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: TextFormField(
@@ -544,6 +480,34 @@ class _cscState extends State<csc> {
                 SizedBox(
                   height: 13,
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 18,left: 52),
+                  child: DropdownButton(
+                    hint: Text('Select City :',style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontSize: 17,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold
+                ),),
+                    dropdownColor: Colors.white,
+                    icon: Icon(Icons.arrow_drop_down,size: 35,),
+                    isExpanded: true,
+                    value: selectedValue,
+                      onChanged: (newvalue) {
+                      setState(() {
+                        selectedValue = newvalue;
+                      });
+                      },
+                    items: items.map((selectedValue) {
+                      return DropdownMenuItem(
+                        value: selectedValue,
+                          child: Text(selectedValue),
+                      );
+                    }).toList(),
+
+                  ),
+                ),
+
                 // Padding(
                 //   padding: const EdgeInsets.only(right: 240),
                 //   child: Text('Enter Your City :',
@@ -553,56 +517,60 @@ class _cscState extends State<csc> {
                 //           fontWeight: FontWeight.bold,
                 //           fontSize: 15)),
                 // ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: TextFormField(
-                    controller: city,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'city is Required';
-                      }
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Select City',
-                      hintStyle: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 17,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                      labelStyle: TextStyle(
-                          color: Colors.black,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                      // prefixIcon: IconButton(
-                      //     onPressed: () {
-                      //       showModalBottomSheet(
-                      //           context: context,
-                      //           builder: (context) => country());
-                      //     },
-                      //     icon: Icon(Icons.location_city)),
-                      icon: Padding(
-                        padding: const EdgeInsets.only(left: 7),
-                        child: Icon(Icons.location_city,size: 29,color: Colors.black,),
-                      )
-                      // focusedBorder: OutlineInputBorder(
-                      //   borderRadius: BorderRadius.circular(23),
-                      //   borderSide: BorderSide(
-                      //     width: 2,
-                      //     color: Colors.black,
-                      //   ),
-                      // ),
-                      // enabledBorder: OutlineInputBorder(
-                      //     borderSide: BorderSide(width: 2, color: Colors.black),
-                      //     borderRadius: BorderRadius.circular(23)),
-                    ),
-                  ),
-                ),
-                // Row(
-                //   children: [
-                //     SizedBox(
-                //       width: 15,
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 20),
+                //   child: TextFormField(
+                //     controller: city,
+                //     validator: (value) {
+                //       if (value == null || value.isEmpty) {
+                //         return 'city is Required';
+                //       }
+                //     },
+                //     decoration: InputDecoration(
+                //       hintText: 'Select City',
+                //       hintStyle: TextStyle(
+                //           fontStyle: FontStyle.italic,
+                //           fontSize: 17,
+                //           color: Colors.black,
+                //           fontWeight: FontWeight.bold),
+                //       labelStyle: TextStyle(
+                //           color: Colors.black,
+                //           fontStyle: FontStyle.italic,
+                //           fontWeight: FontWeight.bold,
+                //           fontSize: 18),
+                //       suffixIcon: IconButton(onPressed: () {
+                //         Navigator.push(context, MaterialPageRoute(builder: (context)=>userlogo()));
+                //       },
+                //           icon: Icon(Icons.arrow_drop_down)),
+                //       // prefixIcon: IconButton(
+                //       //     onPressed: () {
+                //       //       showModalBottomSheet(
+                //       //           context: context,
+                //       //           builder: (context) => country());
+                //       //     },
+                //       //     icon: Icon(Icons.location_city)),
+                //       icon: Padding(
+                //         padding: const EdgeInsets.only(left: 7),
+                //         child: Icon(Icons.location_city,size: 29,color: Colors.black,),
+                //       )
+                //       // focusedBorder: OutlineInputBorder(
+                //       //   borderRadius: BorderRadius.circular(23),
+                //       //   borderSide: BorderSide(
+                //       //     width: 2,
+                //       //     color: Colors.black,
+                //       //   ),
+                //       // ),
+                //       // enabledBorder: OutlineInputBorder(
+                //       //     borderSide: BorderSide(width: 2, color: Colors.black),
+                //       //     borderRadius: BorderRadius.circular(23)),
                 //     ),
+                //   ),
+                // ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 15,
+                    ),
                 //     Text(
                 //       'Gender :',
                 //       style: TextStyle(
@@ -612,11 +580,11 @@ class _cscState extends State<csc> {
                 //     ),
                 //     RadioMenuButton(
                 //         value: 1,
-                //         groupValue: selected,
+                //         groupValue: select,
                 //         onChanged: (value) {
                 //           setState(() {
-                //             selected = 1;
-                //             print('$selected');
+                //             select = 'male';
+                //             print('$select');
                 //           });
                 //           //   value = selected;
                 //         },
@@ -629,11 +597,11 @@ class _cscState extends State<csc> {
                 //         )),
                 //     RadioMenuButton(
                 //       value: 2,
-                //       groupValue: selected,
+                //       groupValue: select,
                 //       onChanged: (value) {
                 //         setState(() {
-                //           selected = 2;
-                //           print('$selected');
+                //           select = 'female';
+                //           print('$select');
                 //         });
                 //       },
                 //       child: Text(
@@ -644,8 +612,8 @@ class _cscState extends State<csc> {
                 //             fontStyle: FontStyle.italic),
                 //       ),
                 //     ),
-                //   ],
-                // ),
+                  ],
+                ),
                 SizedBox(height: 13,),
                 Row(
                   children: [
@@ -661,41 +629,26 @@ class _cscState extends State<csc> {
                     SizedBox(width: 20,),
                     Column(
                       children: [
-
                         CircleAvatar(
                           radius: 30,
                           child: Image(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoGa43cPo70DYcZ847mc02nOf8y0r9nJ38WQ&usqp=CAU')),
-
-                          // child: IconButton(onPressed: () {
-                          //   setState(() {
-                          //     selected = 'male';
-                          //     print('$selected');
-                          //   });
-                          // },
-                          //     icon: Icon(Icons.male,size: 35,))
-
                         ),
-                        Text('Male',style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold)),
-                        // RadioMenuButton(
-                        //     value: 1,
-                        //     groupValue: select,
-                        //     onChanged: (value) {
-                        //       setState(() {
-                        //         select = 'male';
-                        //         print('$select');
-                        //       });
-                        //       //   value = selected;
-                        //     },
-                        //     child: Text(
-                        //       "Male",
-                        //       style: TextStyle(
-                        //           fontWeight: FontWeight.bold,
-                        //           fontSize: 17,
-                        //           fontStyle: FontStyle.italic),
-                        //     )),
+                        RadioMenuButton(
+                            value: 1,
+                            groupValue: select,
+                            onChanged: (value) {
+                              setState(() {
+                                select = 'male';
+                                print('$select');
+                              });
+                            },
+                            child: Text(
+                              "Male",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17,
+                                  fontStyle: FontStyle.italic),
+                            )),
                       ],
                     ),
                     SizedBox(width: 32,),
@@ -704,38 +657,25 @@ class _cscState extends State<csc> {
                         CircleAvatar(
                           radius: 30,
                           backgroundColor: Colors.white,
-                          child: Image(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrH61XOFcRQuQs_ZY5yNgm9QMdrBup7J2-qA&usqp=CAU',)
+                          child: Image(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrH61XOFcRQuQs_ZY5yNgm9QMdrBup7J2-qA&usqp=CAU',),
                           ),
-
-                          // child: IconButton(onPressed: () {
-                            //   setState(() {
-                            //     selected = 'female';
-                            //     print('$selected');
-                            //   });
-                            // },
-                            //     icon: Icon(Icons.female,size: 35,))
                         ),
-                        Text('Female', style : TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold)),
-                        // RadioMenuButton(
-                        //           value: 2,
-                        //           groupValue: select,
-                        //           onChanged: (value) {
-                        //             setState(() {
-                        //               select = 'female';
-                        //               print('$select');
-                        //             });
-                        //             //   value = selected;
-                        //           },
-                        //           child: Text(
-                        //             "Female",
-                        //             style: TextStyle(
-                        //                 fontWeight: FontWeight.bold,
-                        //                 fontSize: 17,
-                        //                 fontStyle: FontStyle.italic),
-                        //           )),
+                        RadioMenuButton(
+                                  value: 2,
+                                  groupValue: select,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      select = 'female';
+                                      print('$select');
+                                    });
+                                  },
+                                  child: Text(
+                                    "Female",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17,
+                                        fontStyle: FontStyle.italic),
+                                  )),
                       ],
                     )
                   ],
@@ -743,7 +683,7 @@ class _cscState extends State<csc> {
                 Row(
                   children: [
                     SizedBox(
-                      width: 80,
+                      width: 40,
                     ),
                     Checkbox(
                       value: check,
@@ -776,8 +716,13 @@ class _cscState extends State<csc> {
                         child: ElevatedButton(
                           style: ButtonStyle(
                               overlayColor:
-                                  getColor(Colors.white, Colors.deepOrange)),
-                          child: Text('Reset'),
+                                  getColor(Colors.white, Colors.lightBlueAccent)),
+                          child: Text('Reset',style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 17,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold
+                          ),),
                           onPressed: () {
                             resetdata();
                             if (Treck_keys.currentState!.validate()) {}
@@ -794,8 +739,13 @@ class _cscState extends State<csc> {
                         child: ElevatedButton(
                           style: ButtonStyle(
                               overlayColor:
-                                  getColor(Colors.white, Colors.deepOrange)),
-                          child: Text('Submit'),
+                                  getColor(Colors.white, Colors.lightBlueAccent)),
+                          child: Text('Submit',style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 17,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold
+                          ),),
                           onPressed: () async {
                             if (Treck_keys.currentState!.validate()) {
                               var postUri = Uri.parse('https://pinkesh2620.000webhostapp.com/api.php');
@@ -884,111 +834,4 @@ class _cscState extends State<csc> {
       });
     }
   }
-
-  Widget country() {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 40,
-            ),
-            Text('Select city'),
-            SizedBox(
-              height: 100,
-            ),
-            CSCPicker(
-              layout: Layout.vertical,
-              flagState: CountryFlag.DISABLE,
-              onCountryChanged: (Countries) {},
-              onStateChanged: (state) {},
-              onCityChanged: (City) {},
-              countryDropdownLabel: "Country",
-              stateDropdownLabel: 'State',
-              cityDropdownLabel: 'city',
-              searchBarRadius: 25,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                     // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>country())) ;
-              },
-              child: Text('Okk'),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-// Widget Buttom () {
-//   return Container(
-//     height: 250,
-//     // width: MediaQuery.of(context).size.width,
-//     child: Padding(
-//       padding: const EdgeInsets.only(top: 15),
-//       child: Card(
-//         // color: Colors.amberAccent,
-//         child: Padding(
-//           padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 12),
-//           child: Container(
-//             decoration: BoxDecoration(
-//               border: Border.all(width: 1),
-//             ),
-//             child: Column(
-//               // mainAxisSize: MainAxisSize.max,
-//               children: [
-//                 Container(
-//                   width: MediaQuery.of(context).size.width,
-//                   color: Colors.deepOrange,
-//                   child: Padding(
-//                     padding: const EdgeInsets.only(left: 125),
-//                     child: Row(
-//                       children: [
-//                         IconButton(onPressed: () {
-//                           //     Navigator.push(context, MaterialPageRoute(builder: (context)=>Cameraapp()));
-//                         },
-//                           icon: Icon(Icons.camera),
-//                           color: Colors.white,),
-//                         Text('Camera',
-//                           style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),),
-//                       ],
-//                     ),
-//                   ),
-//                 ),Divider(thickness: 1,color: Colors.black,),
-//
-//                 Container(
-//                   width: MediaQuery.of(context).size.width, color: Colors.deepOrange,
-//                   child: Padding(
-//                     padding: const EdgeInsets.only(left: 125),
-//                     child: Row(
-//                       children: [
-//                         IconButton(onPressed: () {},
-//                           icon: Icon(Icons.photo),color: Colors.white,),
-//                         Text('Gallery',
-//                           style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),),
-//                       ],
-//                     ),
-//                   ),
-//                 ),Divider(thickness: 1,color: Colors.black,),
-//                 Container(
-//                   width: MediaQuery.of(context).size.width, color: Colors.deepOrange,
-//                   child: Padding(
-//                     padding: const EdgeInsets.only(left: 125),
-//                     child: Row(
-//                       children: [
-//                         IconButton(onPressed: () {},
-//                           icon: Icon(Icons.cancel),color: Colors.white,),
-//                         Text('Cancel',
-//                           style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),),
-//                       ],
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     ),
-//   );
-// }
 }
