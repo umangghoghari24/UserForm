@@ -61,7 +61,7 @@ class _cscState extends State<csc> {
 
   var days = DateFormat('yMMMMd').format(DateTime.now());
 
- // var selected = 0;
+  int selected = 0;
   var select = 'male';
   var check = false;
   File ? _imageFile;
@@ -106,8 +106,8 @@ class _cscState extends State<csc> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1aGHzUoDBYJe-PSkJvOA3NlWedfLxYCWMpw&usqp=CAU'),
-            fit: BoxFit.fill
+            image: AssetImage('assetName/bg.jpg'),
+              fit: BoxFit.fill
           )
         ),
         height: MediaQuery.of(context).size.height,
@@ -633,22 +633,22 @@ class _cscState extends State<csc> {
                           radius: 30,
                           child: Image(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoGa43cPo70DYcZ847mc02nOf8y0r9nJ38WQ&usqp=CAU')),
                         ),
-                        RadioMenuButton(
-                            value: 1,
-                            groupValue: select,
-                            onChanged: (value) {
-                              setState(() {
-                                select = 'male';
-                                print('$select');
-                              });
-                            },
-                            child: Text(
-                              "Male",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                  fontStyle: FontStyle.italic),
-                            )),
+                        // RadioMenuButton(
+                        //     value: 1,
+                        //     groupValue: selected,
+                        //     onChanged: (value) {
+                        //       setState(() {
+                        //         selected = 1;
+                        //         print('$selected');
+                        //       });
+                        //     },
+                        //     child: Text(
+                        //       "Male",
+                        //       style: TextStyle(
+                        //           fontWeight: FontWeight.bold,
+                        //           fontSize: 17,
+                        //           fontStyle: FontStyle.italic),
+                        //     )),
                       ],
                     ),
                     SizedBox(width: 32,),
@@ -660,22 +660,22 @@ class _cscState extends State<csc> {
                           child: Image(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrH61XOFcRQuQs_ZY5yNgm9QMdrBup7J2-qA&usqp=CAU',),
                           ),
                         ),
-                        RadioMenuButton(
-                                  value: 2,
-                                  groupValue: select,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      select = 'female';
-                                      print('$select');
-                                    });
-                                  },
-                                  child: Text(
-                                    "Female",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 17,
-                                        fontStyle: FontStyle.italic),
-                                  )),
+                        // RadioMenuButton(
+                        //           value: 'male',
+                        //           groupValue: selected,
+                        //           onChanged: (value) {
+                        //             setState(() {
+                        //               selected = 2;
+                        //               print('$selected');
+                        //             });
+                        //           },
+                        //           child: Text(
+                        //             "Female",
+                        //             style: TextStyle(
+                        //                 fontWeight: FontWeight.bold,
+                        //                 fontSize: 17,
+                        //                 fontStyle: FontStyle.italic),
+                        //           )),
                       ],
                     )
                   ],
