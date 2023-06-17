@@ -36,6 +36,7 @@ class _userlogoState extends State<userlogo> {
             Text('Userform',style: TextStyle(
               fontStyle: FontStyle.italic,fontWeight: FontWeight.bold,fontSize: 20,
             ),),
+            SizedBox(height: 10,),
             CircularProgressIndicator(
               color: Colors.redAccent,
             )

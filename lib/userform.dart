@@ -60,8 +60,7 @@ class _cscState extends State<csc> {
   ];
 
   var days = DateFormat('yMMMMd').format(DateTime.now());
-
-  int selected = 0;
+  String? selected;
   var select = 'male';
   var check = false;
   File ? _imageFile;
@@ -187,8 +186,7 @@ class _cscState extends State<csc> {
                                 radius: 45))),
                 SizedBox(height: 4,),
                 Text('Select Photo',style:
-                TextStyle(fontWeight: FontWeight.bold,fontSize: 17,fontStyle: FontStyle.italic),),
-
+                TextStyle(fontWeight: FontWeight.bold,fontSize: 17,fontStyle: FontStyle.italic,),),
                 SizedBox(
                   height: 8,
                 ),
@@ -203,7 +201,6 @@ class _cscState extends State<csc> {
                         }
                       },
                       decoration: InputDecoration(
-                        //   labelText: 'User Name',
                         hintText: 'User Name',
                         hintStyle: TextStyle(
                             fontStyle: FontStyle.italic,
@@ -469,111 +466,11 @@ class _cscState extends State<csc> {
 
                   ),
                 ),
-
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 240),
-                //   child: Text('Enter Your City :',
-                //       style: TextStyle(
-                //           color: Colors.black,
-                //           fontStyle: FontStyle.italic,
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 15)),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 20),
-                //   child: TextFormField(
-                //     controller: city,
-                //     validator: (value) {
-                //       if (value == null || value.isEmpty) {
-                //         return 'city is Required';
-                //       }
-                //     },
-                //     decoration: InputDecoration(
-                //       hintText: 'Select City',
-                //       hintStyle: TextStyle(
-                //           fontStyle: FontStyle.italic,
-                //           fontSize: 17,
-                //           color: Colors.black,
-                //           fontWeight: FontWeight.bold),
-                //       labelStyle: TextStyle(
-                //           color: Colors.black,
-                //           fontStyle: FontStyle.italic,
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 18),
-                //       suffixIcon: IconButton(onPressed: () {
-                //         Navigator.push(context, MaterialPageRoute(builder: (context)=>userlogo()));
-                //       },
-                //           icon: Icon(Icons.arrow_drop_down)),
-                //       // prefixIcon: IconButton(
-                //       //     onPressed: () {
-                //       //       showModalBottomSheet(
-                //       //           context: context,
-                //       //           builder: (context) => country());
-                //       //     },
-                //       //     icon: Icon(Icons.location_city)),
-                //       icon: Padding(
-                //         padding: const EdgeInsets.only(left: 7),
-                //         child: Icon(Icons.location_city,size: 29,color: Colors.black,),
-                //       )
-                //       // focusedBorder: OutlineInputBorder(
-                //       //   borderRadius: BorderRadius.circular(23),
-                //       //   borderSide: BorderSide(
-                //       //     width: 2,
-                //       //     color: Colors.black,
-                //       //   ),
-                //       // ),
-                //       // enabledBorder: OutlineInputBorder(
-                //       //     borderSide: BorderSide(width: 2, color: Colors.black),
-                //       //     borderRadius: BorderRadius.circular(23)),
-                //     ),
-                //   ),
-                // ),
                 Row(
                   children: [
                     SizedBox(
                       width: 15,
                     ),
-                //     Text(
-                //       'Gender :',
-                //       style: TextStyle(
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 18,
-                //           fontStyle: FontStyle.italic),
-                //     ),
-                //     RadioMenuButton(
-                //         value: 1,
-                //         groupValue: select,
-                //         onChanged: (value) {
-                //           setState(() {
-                //             select = 'male';
-                //             print('$select');
-                //           });
-                //           //   value = selected;
-                //         },
-                //         child: Text(
-                //           "Male",
-                //           style: TextStyle(
-                //               fontWeight: FontWeight.bold,
-                //               fontSize: 17,
-                //               fontStyle: FontStyle.italic),
-                //         )),
-                //     RadioMenuButton(
-                //       value: 2,
-                //       groupValue: select,
-                //       onChanged: (value) {
-                //         setState(() {
-                //           select = 'female';
-                //           print('$select');
-                //         });
-                //       },
-                //       child: Text(
-                //         "Female",
-                //         style: TextStyle(
-                //             fontWeight: FontWeight.bold,
-                //             fontSize: 17,
-                //             fontStyle: FontStyle.italic),
-                //       ),
-                //     ),
                   ],
                 ),
                 SizedBox(height: 13,),
@@ -596,12 +493,14 @@ class _cscState extends State<csc> {
                           child: Image(image: AssetImage('assetsimage/male.jpg'),
                         ),
                         ),
+                        SizedBox(height: 5,width: 10,),
+
                         RadioMenuButton(
-                            value: 1,
+                            value: 'male',
                             groupValue: selected,
                             onChanged: (value) {
                               setState(() {
-                                selected = 1;
+                                selected = value;
                                 print('$selected');
                               });
                             },
@@ -624,11 +523,11 @@ class _cscState extends State<csc> {
                           ),
                         ),
                         RadioMenuButton(
-                                  value: 2,
+                                  value: 'Female',
                                   groupValue: selected,
                                   onChanged: (value) {
                                     setState(() {
-                                      selected = 2;
+                                      selected = 'Female';
                                       print('$selected');
                                     });
                                   },
@@ -711,7 +610,7 @@ class _cscState extends State<csc> {
                           ),),
                           onPressed: () async {
                             if (Treck_keys.currentState!.validate()) {
-                              var postUri = Uri.parse('https://pinkesh2620.000webhostapp.com/api.php');
+                              var postUri = Uri.parse('https://ntce.000webhostapp.com/get.php');
                               http.MultipartRequest request = http.MultipartRequest('POST', postUri);
                               if(_imageFile!=null){
                                 request.files.add(http.MultipartFile.fromBytes('photo', File(_imageFile!.path).readAsBytesSync(),filename: _imageFile!.path));
@@ -722,13 +621,14 @@ class _cscState extends State<csc> {
                               request.fields['email'] = email.text;
                               request.fields['mob'] = mobile.text;
                               request.fields['birthdate'] = dob.text;
-                              request.fields['country'] = city.text;
-                             // request.fields['gender'] = gender.toString();
+                              request.fields['city'] = selectedValue.toString();
+                              request.fields['gender'] = selected.toString();
                               var streamedResponse = await request.send();
                               var response = await http.Response.fromStream(streamedResponse);
-                            //  print(response.statusCode);
+                              print(response.statusCode);
                               if (response.statusCode == 200) {
                                print(request.fields);
+                               print(response.body);
                                 var data = await jsonDecode(response.body);
                                 if (data['status'] == 1) {
                                   Get.defaultDialog(
