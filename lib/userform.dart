@@ -80,7 +80,7 @@ class _cscState extends State<csc> {
   var passnotvisible = true;
   var passwordnotvisible = true;
 
-  Future<void> submitdata() async {}
+  //Future<void> submitdata() async {}
 
 
   void resetdata() {
@@ -463,7 +463,6 @@ class _cscState extends State<csc> {
                           child: Text(selectedValue),
                       );
                     }).toList(),
-
                   ),
                 ),
                 Row(
@@ -612,7 +611,7 @@ class _cscState extends State<csc> {
                             if (Treck_keys.currentState!.validate()) {
                               var postUri = Uri.parse('https://ntce.000webhostapp.com/get.php');
                               http.MultipartRequest request = http.MultipartRequest('POST', postUri);
-                              if(_imageFile!=null){
+                              if(_imageFile!=null) {
                                 request.files.add(http.MultipartFile.fromBytes('photo', File(_imageFile!.path).readAsBytesSync(),filename: _imageFile!.path));
                               }
                               request.fields['uname'] = uname.text;
@@ -646,11 +645,20 @@ class _cscState extends State<csc> {
                                             onPressed: () {
                                                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>csc()));
                                             },
-                                            child: Text('Ok'))
+                                            child: Text('Okk'))
                                       ]);
                                 }
                               } else {
-                                print('something went wrong');
+                                Get.defaultDialog(
+                                  title: 'Invalid Input',
+                                  middleText: 'Try Again',middleTextStyle: TextStyle(fontSize: 17,color: Colors.red,fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),
+                                  titlePadding: EdgeInsets.only(top: 30),
+                                  titleStyle: TextStyle(fontSize: 20,color: Colors.red,fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),
+                                  radius: 15,
+                                  backgroundColor: Colors.white,
+                                );
+
+                               // print('something went wrong');
                               }
                             }
                           },
