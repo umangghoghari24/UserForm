@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:userform/userlogo.dart';
+import 'package:location/location.dart';
 
 
 
@@ -92,7 +93,47 @@ class _cscState extends State<csc> {
     dob.text = '';
     city.text = '';
   }
+  late LocationData _currentPosition;
+  var late;
+  var long;
 
+  Future<void> getLocation() async{
+
+    if(await Permission.location.isGranted){
+      _currentPosition = await Location().getLocation();
+      // // pressure(_currentPosition);
+      //   print("Location");
+      print(_currentPosition.latitude);
+      print(_currentPosition.longitude);
+
+      setState(() {
+        late = _currentPosition.latitude.toString();
+        long = _currentPosition.longitude.toString();
+      });
+
+      // String url ='https://api.openweathermap.org/data/2.5/forecast?late=$late&long=$long&appid=ff0d0154a0fbf7736676e415048f620b';
+      // print(url);
+
+      // var keys = 'ff0d0154a0fbf7736676e415048f620b';
+      // var response = await http.get (Uri.parse(url));
+      // if (response.statusCode == 200) {
+      //   var mydata1 = await jsonDecode(response.body);
+        //  print(response.body);
+      //  Navigator.push(context, MaterialPageRoute(builder: (context) => weather()));
+      // }
+      // else {
+      //   print('something went wrong');
+      // }
+    }else{
+      Permission.location.request();
+    }
+  }
+ @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getLocation();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -472,6 +513,20 @@ class _cscState extends State<csc> {
                     ),
                   ],
                 ),
+                Row(
+                  children: [
+                    SizedBox(width: 40,),
+                    Container(
+                      height: 40,width: 150 , color: Colors.grey,
+                    child: Text('$late'),
+                    ),
+                    SizedBox(width: 50,),
+                    Container(
+                      height: 40,width: 140 , color: Colors.grey,
+                    child: Text('$long'),
+                    )
+                  ],
+                ),
                 SizedBox(height: 13,),
                 Row(
                   children: [
@@ -538,7 +593,7 @@ class _cscState extends State<csc> {
                                         fontStyle: FontStyle.italic),
                                   )),
                       ],
-                    )
+                    ),
                   ],
                 ),
                 Row(

@@ -41,6 +41,7 @@ dependencies:
   get: ^4.6.5
   image_picker: ^0.8.7+5
   permission_handler: ^10.3.0
+  location: ^4.4.0
 
 
 
