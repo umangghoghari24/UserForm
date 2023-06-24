@@ -110,20 +110,6 @@ class _cscState extends State<csc> {
         late = _currentPosition.latitude.toString();
         long = _currentPosition.longitude.toString();
       });
-
-      // String url ='https://api.openweathermap.org/data/2.5/forecast?late=$late&long=$long&appid=ff0d0154a0fbf7736676e415048f620b';
-      // print(url);
-
-      // var keys = 'ff0d0154a0fbf7736676e415048f620b';
-      // var response = await http.get (Uri.parse(url));
-      // if (response.statusCode == 200) {
-      //   var mydata1 = await jsonDecode(response.body);
-        //  print(response.body);
-      //  Navigator.push(context, MaterialPageRoute(builder: (context) => weather()));
-      // }
-      // else {
-      //   print('something went wrong');
-      // }
     }else{
       Permission.location.request();
     }
@@ -513,20 +499,6 @@ class _cscState extends State<csc> {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    SizedBox(width: 40,),
-                    Container(
-                      height: 40,width: 150 , color: Colors.grey,
-                    child: Text('$late'),
-                    ),
-                    SizedBox(width: 50,),
-                    Container(
-                      height: 40,width: 140 , color: Colors.grey,
-                    child: Text('$long'),
-                    )
-                  ],
-                ),
                 SizedBox(height: 13,),
                 Row(
                   children: [
@@ -594,6 +566,20 @@ class _cscState extends State<csc> {
                                   )),
                       ],
                     ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    SizedBox(width: 170,),
+                    Container(
+                      height: 20,width: 90 , color: Colors.grey.withOpacity(0.5),
+                      child: Text('$late'),
+                    ),
+                    SizedBox(width: 20,),
+                    Container(
+                      height: 20,width: 90 , color: Colors.grey.withOpacity(0.5),
+                      child: Text('$long'),
+                    )
                   ],
                 ),
                 Row(

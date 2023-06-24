@@ -38,7 +38,7 @@ class _userlogoState extends State<userlogo> {
             ),),
             SizedBox(height: 10,),
             CircularProgressIndicator(
-              color: Colors.redAccent,
+              color: Colors.lightBlueAccent,
             )
           ],
         ),
