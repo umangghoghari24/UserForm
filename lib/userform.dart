@@ -653,7 +653,7 @@ class _cscState extends State<csc> {
                               var postUri = Uri.parse('https://ntce.000webhostapp.com/get.php');
                               http.MultipartRequest request = http.MultipartRequest('POST', postUri);
                               if(_imageFile!=null) {
-                                request.files.add(http.MultipartFile.fromBytes('photo', File(_imageFile!.path).readAsBytesSync(),filename: _imageFile!.path));
+                                request.files.add(http.MultipartFile.fromBytes('img', File(_imageFile!.path).readAsBytesSync(),filename: _imageFile!.path));
                               }
                               request.fields['uname'] = uname.text;
                               request.fields['pass'] = pass.text;
@@ -663,6 +663,8 @@ class _cscState extends State<csc> {
                               request.fields['birthdate'] = dob.text;
                               request.fields['city'] = selectedValue.toString();
                               request.fields['gender'] = selected.toString();
+                              request.fields['lat'] = late.toString();
+                              request.fields['long'] = long.toString();
                               var streamedResponse = await request.send();
                               var response = await http.Response.fromStream(streamedResponse);
                               print(response.statusCode);
