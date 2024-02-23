@@ -2,14 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:csc_picker/csc_picker.dart';
 import 'package:intl/intl.dart';
-// import 'package:csc_picker/model/select_status_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:userform/userlogo.dart';
 import 'package:location/location.dart';
 
 
@@ -66,8 +63,6 @@ class _cscState extends State<csc> {
   var check = false;
   File ? _imageFile;
 
-
-
   TextEditingController uname = TextEditingController();
   TextEditingController pass = TextEditingController();
   TextEditingController cpass = TextEditingController();
@@ -82,7 +77,6 @@ class _cscState extends State<csc> {
   var passwordnotvisible = true;
 
   //Future<void> submitdata() async {}
-
 
   void resetdata() {
     uname.text = '';
@@ -101,10 +95,9 @@ class _cscState extends State<csc> {
 
     if(await Permission.location.isGranted){
       _currentPosition = await Location().getLocation();
-      // // pressure(_currentPosition);
-      //   print("Location");
-      print(_currentPosition.latitude);
-      print(_currentPosition.longitude);
+
+      // print(_currentPosition.latitude);
+      // print(_currentPosition.longitude);
 
       setState(() {
         late = _currentPosition.latitude.toString();
@@ -124,11 +117,14 @@ class _cscState extends State<csc> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Wel come to user app',
+        title: Center(
+          child: Text(
+            'Wel come to user app',
+          ),
         ),
         backgroundColor: Colors.lightBlueAccent,
       ),
+
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -137,6 +133,7 @@ class _cscState extends State<csc> {
           )
         ),
         height: MediaQuery.of(context).size.height,
+
         child: SingleChildScrollView(
           child: Form(
             key: Treck_keys,
@@ -527,7 +524,7 @@ class _cscState extends State<csc> {
                             onChanged: (value) {
                               setState(() {
                                 selected = value;
-                                print('$selected');
+                                print('$value');
                               });
                             },
                             child: Text(
@@ -700,10 +697,10 @@ class _cscState extends State<csc> {
                                   radius: 15,
                                   backgroundColor: Colors.white,
                                 );
-
                                // print('something went wrong');
                               }
                             }
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> csc()));
                           },
                         ),
                       ),
